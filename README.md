@@ -1,5 +1,9 @@
 # generate_vdr.py README.md
 
+🔒 適用範圍 (Usage Scope)
+
+本工具僅支援 Trivy JSON 輸出結構 產生 VDR 格式，不保證其他 SBOM 工具相容。
+
 ## Overview
 
 This script merges a **CycloneDX SBOM JSON** file with a **Trivy vulnerability scan result JSON** to produce a **Vulnerability Disclosure Report (VDR)** in CycloneDX VDR schema format. It now also supports specifying a `--scan-type` parameter to indicate whether the scan is of a **source code repository** or a **container image**, useful for correct classification in IBM Concert.
@@ -60,5 +64,11 @@ python generate_vdr.py sbom.json vuln.json output_vdr.json \
 
 ---
 
-Let me know if you also need a pipeline integration snippet for your upcoming implementation this week.
+## License
+
+MIT License
+
+Copyright (c) 2025 Palsys Digital Technology Corp
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
