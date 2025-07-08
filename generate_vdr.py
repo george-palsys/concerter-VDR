@@ -24,6 +24,8 @@ def main():
                         help="Audience name. Intended recipient or system for this report.")
     parser.add_argument("--audience-type", default="service",
                         help="Audience type, such as 'service' or 'team'.")
+    parser.add_argument("--scan-type", default="source",
+                        help="Type of scan, such as 'source' or 'image'. Used as a custom property for parsing in Concert.")
 
     args = parser.parse_args()
 
@@ -68,6 +70,13 @@ def main():
         sbom_data['vulnerabilities'] = vulnerabilities
     else:
         print("No vulnerabilities found in vuln_file.")
+
+    # Add scan.type property to metadata.component
+    if 'metadata' in sbom_data and 'component' in sbom_data['metadata']:
+        sbom_data['metadata']['component'].setdefault('properties', []).append({
+            "name": "scan.type",
+            "value": args.scan_type
+        })
 
     # Add metadata.vdr block
     sbom_data.setdefault('metadata', {})
